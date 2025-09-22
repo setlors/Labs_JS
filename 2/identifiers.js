@@ -1,3 +1,4 @@
+//Ідентифікатори
 
 let myName = 'Veronika';
 const birthYear = 2008;
