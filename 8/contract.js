@@ -1,19 +1,19 @@
 function contract(fn, ...types) {
   return function (...args) {
-    const argTypes = types.slice(0, -1);
-    const resType = types[types.length - 1];
+    const arg = types.slice(0, -1);
+    const res = types[types.length - 1];
 
-    if (args.length !== argTypes.length)
-      throw new TypeError(`Expected number of arguments: ${argTypes.length}`);
-    
+    if (args.length !== arg.length)
+      throw new TypeError(`Expected number of arguments: ${arg.length}`);
+
     for (let i = 0; i < args.length; i++) {
-      if (typeof args[i] !== argTypes[i].name.toLowerCase())
+      if (typeof args[i] !== arg[i].name.toLowerCase())
         throw new TypeError("Argument type is incorrect");
     }
 
     const result = fn(...args);
 
-    if (typeof result !== resType.name.toLowerCase())
+    if (typeof result !== res.name.toLowerCase())
       throw new TypeError("Result type is incorrect");
 
     return result;
